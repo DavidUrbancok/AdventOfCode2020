@@ -43,6 +43,39 @@ namespace December1
 
             Console.WriteLine($"{number1} + {number2} = {sum}");
             Console.WriteLine($"Product: {number1} * {number2} = {number1 * number2}");
+
+            Console.WriteLine("==========");
+
+            for (int i = 0; i < numbers.Count - 2; i++)
+            {
+                var num = numbers[i];
+                beginningPosition = i + 1;
+                endPosition = numbers.Count - 1;
+
+                while (numbers[beginningPosition] < numbers[endPosition])
+                {
+                    sum = num + numbers.ElementAt(beginningPosition) + numbers.ElementAt(endPosition);
+                    
+                    if (sum == Year)
+                    {
+                        number1 = numbers.ElementAt(beginningPosition);
+                        number2 = numbers.ElementAt(endPosition);
+
+                        Console.WriteLine($"{num} + {number1} + {number2} = {sum}");
+                        Console.WriteLine($"Product: {num} * {number1} * {number2} = {num * number1 * number2}");
+
+                        return;
+                    }
+                    else if (sum > Year)
+                    {
+                        --endPosition;
+                    }
+                    else
+                    {
+                        ++beginningPosition;
+                    }
+                }
+            }
         }
     }
 }
